@@ -14,7 +14,7 @@ type Pages = {
   "/": {
     params: {};
   };
-  "/chat": {
+  "/email": {
     params: {};
   };
   "/*": {
@@ -27,11 +27,11 @@ type Pages = {
 type RouteFiles = {
   "root.jsx": {
     id: "root";
-    page: "/" | "/chat" | "/*";
+    page: "/" | "/email" | "/*";
   };
-  "routes/[chat]._index.jsx": {
-    id: "routes/[chat]._index";
-    page: "/chat";
+  "routes/[email]._index.jsx": {
+    id: "routes/[email]._index";
+    page: "/email";
   };
   "routes/_index.jsx": {
     id: "routes/_index";
@@ -45,7 +45,7 @@ type RouteFiles = {
 
 type RouteModules = {
   "root": typeof import("./app/root.jsx");
-  "routes/[chat]._index": typeof import("./app/routes/[chat]._index.jsx");
+  "routes/[email]._index": typeof import("./app/routes/[email]._index.jsx");
   "routes/_index": typeof import("./app/routes/_index.jsx");
   "routes/[404]._index": typeof import("./app/routes/[404]._index.jsx");
 };

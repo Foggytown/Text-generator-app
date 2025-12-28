@@ -4,6 +4,6 @@
     <loc>http://localhost:3000/</loc>
   </url>
   <url>
-    <loc>http://localhost:3000/chat</loc>
+    <loc>http://localhost:3000/email</loc>
   </url>
 </urlset>

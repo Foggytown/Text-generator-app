@@ -2,13 +2,13 @@ import { createContext, useContext, useMemo, useReducer, useState, createElement
 import { applyDelta, ReflexEvent, hydrateClientStorage, useEventLoop, refs } from "$/utils/state"
 import { jsx } from "@emotion/react";
 
-export const initialState = {"reflex___state____state": {"is_hydrated_rx_state_": false, "router_rx_state_": {"session": {"client_token": "", "client_ip": "", "session_id": ""}, "headers": {"host": "", "origin": "", "upgrade": "", "connection": "", "cookie": "", "pragma": "", "cache_control": "", "user_agent": "", "sec_websocket_version": "", "sec_websocket_key": "", "sec_websocket_extensions": "", "accept_encoding": "", "accept_language": "", "raw_headers": {}}, "page": {"host": "", "path": "", "raw_path": "", "full_path": "", "full_raw_path": "", "params": {}}, "url": "", "route_id": ""}}, "reflex___state____state.reflex___state____frontend_event_exception_state": {}, "reflex___state____state.reflex___state____on_load_internal_state": {}, "reflex___state____state.reflex___state____update_vars_internal_state": {}, "reflex___state____state.reflex_proj___reflex_proj____state": {"complete_rx_state_": false, "finished_training_rx_state_": false, "num_words_rx_state_": "", "processing_rx_state_": false, "prompt_rx_state_": "", "result_rx_state_": "", "training_rx_state_": false}}
+export const initialState = {"reflex___state____state": {"is_hydrated_rx_state_": false, "router_rx_state_": {"session": {"client_token": "", "client_ip": "", "session_id": ""}, "headers": {"host": "", "origin": "", "upgrade": "", "connection": "", "cookie": "", "pragma": "", "cache_control": "", "user_agent": "", "sec_websocket_version": "", "sec_websocket_key": "", "sec_websocket_extensions": "", "accept_encoding": "", "accept_language": "", "raw_headers": {}}, "page": {"host": "", "path": "", "raw_path": "", "full_path": "", "full_raw_path": "", "params": {}}, "url": "", "route_id": ""}}, "reflex___state____state.reflex___state____frontend_event_exception_state": {}, "reflex___state____state.reflex___state____on_load_internal_state": {}, "reflex___state____state.reflex___state____update_vars_internal_state": {}, "reflex___state____state.reflex_proj___reflex_proj____auto_complete_state": {"full_suggestions_rx_state_": [], "in_line_suggestion_rx_state_": "", "loading_rx_state_": false, "query_rx_state_": "", "selected_index_rx_state_": -1, "show_suggestions_rx_state_": false, "suffix_rx_state_": "", "word_suggestions_rx_state_": []}, "reflex___state____state.reflex_proj___reflex_proj____state": {"finished_loading_rx_state_": false, "loading_rx_state_": false}}
 
 export const defaultColorMode = "system"
 export const ColorModeContext = createContext(null);
 export const UploadFilesContext = createContext(null);
 export const DispatchContext = createContext(null);
-export const StateContexts = {reflex___state____state: createContext(null),reflex___state____state__reflex___state____frontend_event_exception_state: createContext(null),reflex___state____state__reflex___state____on_load_internal_state: createContext(null),reflex___state____state__reflex___state____update_vars_internal_state: createContext(null),reflex___state____state__reflex_proj___reflex_proj____state: createContext(null),};
+export const StateContexts = {reflex___state____state: createContext(null),reflex___state____state__reflex___state____frontend_event_exception_state: createContext(null),reflex___state____state__reflex___state____on_load_internal_state: createContext(null),reflex___state____state__reflex___state____update_vars_internal_state: createContext(null),reflex___state____state__reflex_proj___reflex_proj____auto_complete_state: createContext(null),reflex___state____state__reflex_proj___reflex_proj____state: createContext(null),};
 export const EventLoopContext = createContext(null);
 export const clientStorage = {"cookies": {}, "local_storage": {}, "session_storage": {}}
 
@@ -96,6 +96,7 @@ export function StateProvider({ children }) {
 const [reflex___state____state__reflex___state____frontend_event_exception_state, dispatch_reflex___state____state__reflex___state____frontend_event_exception_state] = useReducer(applyDelta, initialState["reflex___state____state.reflex___state____frontend_event_exception_state"])
 const [reflex___state____state__reflex___state____on_load_internal_state, dispatch_reflex___state____state__reflex___state____on_load_internal_state] = useReducer(applyDelta, initialState["reflex___state____state.reflex___state____on_load_internal_state"])
 const [reflex___state____state__reflex___state____update_vars_internal_state, dispatch_reflex___state____state__reflex___state____update_vars_internal_state] = useReducer(applyDelta, initialState["reflex___state____state.reflex___state____update_vars_internal_state"])
+const [reflex___state____state__reflex_proj___reflex_proj____auto_complete_state, dispatch_reflex___state____state__reflex_proj___reflex_proj____auto_complete_state] = useReducer(applyDelta, initialState["reflex___state____state.reflex_proj___reflex_proj____auto_complete_state"])
 const [reflex___state____state__reflex_proj___reflex_proj____state, dispatch_reflex___state____state__reflex_proj___reflex_proj____state] = useReducer(applyDelta, initialState["reflex___state____state.reflex_proj___reflex_proj____state"])
   const dispatchers = useMemo(() => {
     return {
@@ -103,6 +104,7 @@ const [reflex___state____state__reflex_proj___reflex_proj____state, dispatch_ref
 "reflex___state____state.reflex___state____frontend_event_exception_state": dispatch_reflex___state____state__reflex___state____frontend_event_exception_state,
 "reflex___state____state.reflex___state____on_load_internal_state": dispatch_reflex___state____state__reflex___state____on_load_internal_state,
 "reflex___state____state.reflex___state____update_vars_internal_state": dispatch_reflex___state____state__reflex___state____update_vars_internal_state,
+"reflex___state____state.reflex_proj___reflex_proj____auto_complete_state": dispatch_reflex___state____state__reflex_proj___reflex_proj____auto_complete_state,
 "reflex___state____state.reflex_proj___reflex_proj____state": dispatch_reflex___state____state__reflex_proj___reflex_proj____state,
     }
   }, [])
@@ -112,8 +114,9 @@ const [reflex___state____state__reflex_proj___reflex_proj____state, dispatch_ref
 createElement(StateContexts.reflex___state____state__reflex___state____frontend_event_exception_state,{value: reflex___state____state__reflex___state____frontend_event_exception_state},
 createElement(StateContexts.reflex___state____state__reflex___state____on_load_internal_state,{value: reflex___state____state__reflex___state____on_load_internal_state},
 createElement(StateContexts.reflex___state____state__reflex___state____update_vars_internal_state,{value: reflex___state____state__reflex___state____update_vars_internal_state},
+createElement(StateContexts.reflex___state____state__reflex_proj___reflex_proj____auto_complete_state,{value: reflex___state____state__reflex_proj___reflex_proj____auto_complete_state},
 createElement(StateContexts.reflex___state____state__reflex_proj___reflex_proj____state,{value: reflex___state____state__reflex_proj___reflex_proj____state},
     createElement(DispatchContext, {value: dispatchers}, children)
-    )))))
+    ))))))
   )
 }
